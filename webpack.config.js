@@ -1,5 +1,4 @@
 const path = require('path');
-
 const getLoaderPath = (loaderPath) => {
     return path.resolve(__dirname, "loaders", loaderPath);
 }
@@ -16,6 +15,13 @@ module.exports  = {
             {
                 test: /\.js$/,
                 loader: [getLoaderPath("loader1")]
+            },
+            {
+                test: /\.txt$/,
+                use: [
+                    getLoaderPath('uppercase-loader.js'),
+                    getLoaderPath('reverse-loader.js')
+                ]
             }
         ]
     }
